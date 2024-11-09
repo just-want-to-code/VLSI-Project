@@ -7,7 +7,7 @@ This project is about developing a congestion-aware routing algorithm for 3D NoC
 [xyztest.txt](https://github.com/just-want-to-code/VLSI-Project/blob/main/xyzdesign.txt)- This file consists of the testbench code for simulating the XYZ algorithm. \
 [axyzdesign.txt](https://github.com/just-want-to-code/VLSI-Project/blob/main/axyzdesign.txt)- This file consists of the design code for the router using adaptive XYZ algorithm. \
 [axyztest.txt](https://github.com/just-want-to-code/VLSI-Project/blob/main/axyztest.txt)- This file consists of the testbench code for simulating the adaptive XYZ algorithm. \
-[sample_result.txt](https://github.com/just-want-to-code/VLSI-Project/blob/main/sample_result.txt)- This file consists of a comparison between XYZ and adaptive XYZ algorithm using a single test case. \
+[sample_result.txt](https://github.com/just-want-to-code/VLSI-Project/blob/main/sample_result.txt)- This file consists of a comparison between XYZ and adaptive XYZ algorithm using a single test case. 
 
 ## Steps
 
