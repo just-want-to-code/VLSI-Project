@@ -1,0 +1,75 @@
+Sample result for moving packet from (3,4,5) to (4,8,10). We apply congestion at x at 0th clock cycle and remove it at 8th clock cycle.
+
+XYZ Routing:
+design.sv:78: warning: System task ($display) cannot be synthesized in an always_comb process.
+Starting XYZ Router test with throughput and latency calculation...
+Routing... Current Position: (3, 4, 5) | Destination: (4, 8, 10) | Direction: 000
+Cycle count:           1
+Cycle count:           2
+Cycle count:           3
+Cycle count:           4
+Cycle count:           5
+Cycle count:           6
+Cycle count:           7
+Cycle count:           8
+Cycle count:           9
+Routing... Current Position: (3, 4, 5) | Destination: (4, 8, 10) | Direction: 000
+Routing... Current Position: (4, 4, 5) | Destination: (4, 8, 10) | Direction: 001
+Cycle count:          10
+Routing... Current Position: (4, 5, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:          11
+Routing... Current Position: (4, 6, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:          12
+Routing... Current Position: (4, 7, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:          13
+Routing... Current Position: (4, 8, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:          14
+Routing... Current Position: (4, 8, 6) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:          15
+Routing... Current Position: (4, 8, 7) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:          16
+Routing... Current Position: (4, 8, 8) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:          17
+Routing... Current Position: (4, 8, 9) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:          18
+Routing... Current Position: (4, 8, 10) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:          19
+Cycle count:          20
+Packet Routing from ( 3, 4, 5) to ( 4, 8,10) completed.
+Latency: 20 clock cycles
+Throughput: 5000.000000 packets per us
+testbench.sv:79: $finish called at 210000 (1ps)
+Done
+
+DyXYZ routing:
+design.sv:28: warning: System task ($display) cannot be synthesized in an always_ff process.
+Starting XYZ Router test for DyXYZ adaptive routing...
+Cycle count:           1
+Routing... Current Position: (3, 4, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:           2
+Routing... Current Position: (3, 5, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:           3
+Routing... Current Position: (3, 6, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:           4
+Routing... Current Position: (3, 7, 5) | Destination: (4, 8, 10) | Direction: 011
+Cycle count:           5
+Routing... Current Position: (3, 8, 5) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:           6
+Routing... Current Position: (3, 8, 6) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:           7
+Routing... Current Position: (3, 8, 7) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:           8
+Routing... Current Position: (3, 8, 8) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:           9
+Routing... Current Position: (3, 8, 9) | Destination: (4, 8, 10) | Direction: 001
+Cycle count:          10
+Routing... Current Position: (4, 8, 9) | Destination: (4, 8, 10) | Direction: 101
+Cycle count:          11
+Routing... Current Position: (4, 8, 10) | Destination: (4, 8, 10) | Direction: 000
+Cycle count:          12
+Routing complete.
+Latency: 12 clock cycles
+Throughput: 8333.333333 packets per us
+Simulation Timeout Reached.
+testbench.sv:74: $finish called at 5130000 (1ps)
+Done

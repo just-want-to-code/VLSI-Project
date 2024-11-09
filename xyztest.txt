@@ -1,0 +1,81 @@
+`timescale 1ns / 1ps
+
+module Testbench();
+    // Testbench signals
+    logic [3:0] src_x, src_y, src_z;
+    logic [3:0] dest_x, dest_y, dest_z;
+    logic [2:0] direction;
+    logic clk, reset;
+    int start_time, end_time;  // Time stamps for calculating latency
+    int latency;               // Latency in clock cycles
+    real throughput;           // Throughput in packets per microsecond
+  	logic [1:0] congestion_x, congestion_y, congestion_z;
+  	int max_cycles = 1000;  // Define a max cycle count to prevent infinite loop
+    int cycle_count = 0;
+
+    // Instantiate the XYZ Router
+    XYZ_Router uut (
+        .src_x(src_x),
+        .src_y(src_y),
+        .src_z(src_z),
+        .dest_x(dest_x),
+        .dest_y(dest_y),
+        .dest_z(dest_z),
+        .direction(direction),
+        .clk(clk),
+      .reset(reset),
+      .congestion_x(congestion_x),  // Connect congestion signals
+        .congestion_y(congestion_y),
+        .congestion_z(congestion_z)
+    );
+
+    // Clock generation
+    always begin
+        #5 clk = ~clk;  // 100 MHz clock (10ns period)
+    end
+
+    // Test procedure
+    initial begin
+        $display("Starting XYZ Router test with throughput and latency calculation...");
+
+        // Initialize signals
+        clk = 0;
+        reset = 1;
+        src_x = 3; src_y = 4; src_z = 5; // Source position
+        dest_x = 4; dest_y = 8; dest_z = 10; // Destination position
+      	congestion_x = 2;  // putting congestion on x
+        congestion_y = 0;
+        congestion_z = 0;
+        #10 reset = 0;  // Release reset after 10ns
+
+        // Capture the start time for latency calculation
+        start_time = $time;
+
+        // Simulate the routing process
+      while (uut.state != uut.ARRIVED && cycle_count<max_cycles) begin
+            #10; // Wait for one clock cycle
+        if (cycle_count==8)
+          		congestion_x=0; // removing congestion 
+          	cycle_count++;
+        
+        $display("Cycle count: %d", cycle_count);
+        end
+		if (cycle_count >= max_cycles) begin
+            $display("Max cycle limit reached. Possible issue in routing.");
+            $finish;
+        end
+        // Capture the end time when the packet reaches its destination
+        end_time = $time;
+
+        // Calculate latency in clock cycles
+        latency = (end_time - start_time) / 10;  // Convert from time to clock cycles (10ns period)
+      $display("Packet Routing from (%d,%d,%d) to (%d,%d,%d) completed.", src_x, src_y,src_z, dest_x, dest_y, dest_z);
+        $display("Latency: %0d clock cycles", latency);
+
+        // Throughput calculation (1 packet processed in the simulation time)
+        throughput = 1 / ((end_time - start_time) / 1000000.0); // Convert time to microseconds
+        $display("Throughput: %0f packets per us", throughput);
+
+        $finish;
+    end
+endmodule
