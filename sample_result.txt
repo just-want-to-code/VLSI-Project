@@ -41,9 +41,9 @@ Throughput: 5000.000000 packets per us
 testbench.sv:79: $finish called at 210000 (1ps)
 Done
 
-DyXYZ routing:
+AXYZ routing:
 design.sv:28: warning: System task ($display) cannot be synthesized in an always_ff process.
-Starting XYZ Router test for DyXYZ adaptive routing...
+Starting Router test for AXYZ adaptive routing...
 Cycle count:           1
 Routing... Current Position: (3, 4, 5) | Destination: (4, 8, 10) | Direction: 011
 Cycle count:           2
